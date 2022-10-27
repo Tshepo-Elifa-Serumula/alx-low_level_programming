@@ -1,47 +1,29 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * print_number - Checks for a digit (0 through 9)
- * @n: n - variable
- * Return: Always 0
+ * rot13 - encodes a string using rot13
+ * @s: input string
+ * Return: the pointer to dest
  */
-void print_number(int n)
+
+char *rot13(char *s)
 {
-	unsigned int z;
-	int m, b;
+	int count = 0, i;
+	char alphabet[] = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	char rot13[] = "nopqrstuvwxyzabcdefghijklmNOPQRSTUVWXYZABCDEFGHIJKLM";
 
-	b = 10;
+	while (*(s + count) != '\0')
+	{
+		for (i = 0; i < 52; i++)
+		{
+			if (*(s + count) == alphabet[i])
+			{
+				*(s + count) = rot13[i];
+				break;
+			}
+		}
+		count++;
+	}
 
-	if (n < 10 && n >= 0)
-	{
-		_putchar (n + '0');
-	}
-	else if (n > -10 && n < 0)
-	{
-		n = n - 2 * n;
-		_putchar('-');
-		_putchar (n + '0');
-	}
-
-	else
-	{
-		if (n < 0)
-		{
-			n = n * -1;
-			_putchar ('-');
-		}
-		z = n;
-		while (z / b > 9)
-		{
-			b = b * 10;
-		}
-		while (b > 0)
-		{
-			m = z / b;
-			z = z % b;
-			_putchar (m + '0');
-			b = b / 10;
-		}
-	}
+	return (s);
 }
-		
