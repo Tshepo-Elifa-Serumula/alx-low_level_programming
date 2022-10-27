@@ -2,17 +2,20 @@
 
 /**
  * string_toupper - a function that changes all lower of a strings to upper
- * @n: input string
- * Return: capitalized string
+ * @s: s is the array
+ * Return: Always 0
  */
-char *string_toupper(char *n)
+char *string_toupper(char *s)
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; n[i] != '\0'; i++)
+	while (s[i] != '\0')
 	{
-		if (n[i] >= 'a' && n[i] <= 'z')
-			n[i] = n[i] - 32
+		if ((s[i] >= 97) && (s[i] <= 122))
+		{
+			s[i] = s[i] - 32;
+		}
+		i++;
 	}
-	return (n);
+	return (s);
 }
